@@ -70,12 +70,17 @@ bot.on("text", function(msg) {
             request(url, function(error, response, body) {
               if (!error && response.statusCode == 200) {
                 const data = JSON.parse(body);
-                const newMsg = msg.text.replace(/\s+/g, '').replace(/\D+/g,"");
+                const newMsg = msg.text.replace(/\s+/g, "").replace(/\D+/g, "");
                 const num = parseInt(newMsg);
                 const summ = num / data[0].sale;
 
                 if (isNaN(num)) {
-                  bot.sendMessage(messageChatId, `Неверный формат. ${msg.from.first_name}, введите, пожалуйста, число`);
+                  bot.sendMessage(
+                    messageChatId,
+                    `Неверный формат. ${
+                      msg.from.first_name
+                    }, введите, пожалуйста, число`
+                  );
                   fixTwice();
                 } else {
                   bot.sendMessage(
@@ -104,11 +109,17 @@ bot.on("text", function(msg) {
             request(url, function(error, response, body) {
               if (!error && response.statusCode == 200) {
                 const data = JSON.parse(body);
-                const num = parseInt(msg.text);
+                const newMsg = msg.text.replace(/\s+/g, "").replace(/\D+/g, "");
+                const num = parseInt(newMsg);
                 const summ = num * data[0].buy;
 
                 if (isNaN(num)) {
-                  bot.sendMessage(messageChatId, `Неверный формат. ${msg.from.first_name}, введите, пожалуйста, число`);
+                  bot.sendMessage(
+                    messageChatId,
+                    `Неверный формат. ${
+                      msg.from.first_name
+                    }, введите, пожалуйста, число`
+                  );
                   fixTwice();
                 } else {
                   bot.sendMessage(
@@ -138,11 +149,17 @@ bot.on("text", function(msg) {
             request(url, function(error, response, body) {
               if (!error && response.statusCode == 200) {
                 const data = JSON.parse(body);
-                const num = parseInt(msg.text);
+                const newMsg = msg.text.replace(/\s+/g, "").replace(/\D+/g, "");
+                const num = parseInt(newMsg);
                 const summ = num / data[1].sale;
 
                 if (isNaN(num)) {
-                  bot.sendMessage(messageChatId, `Неверный формат. ${msg.from.first_name}, введите, пожалуйста, число`);
+                  bot.sendMessage(
+                    messageChatId,
+                    `Неверный формат. ${
+                      msg.from.first_name
+                    }, введите, пожалуйста, число`
+                  );
                   fixTwice();
                 } else {
                   bot.sendMessage(
@@ -171,11 +188,17 @@ bot.on("text", function(msg) {
             request(url, function(error, response, body) {
               if (!error && response.statusCode == 200) {
                 const data = JSON.parse(body);
-                const num = parseInt(msg.text);
+                const newMsg = msg.text.replace(/\s+/g, "").replace(/\D+/g, "");
+                const num = parseInt(newMsg);
                 const summ = num * data[1].buy;
 
                 if (isNaN(num)) {
-                  bot.sendMessage(messageChatId, `Неверный формат. ${msg.from.first_name}, введите, пожалуйста, число`);
+                  bot.sendMessage(
+                    messageChatId,
+                    `Неверный формат. ${
+                      msg.from.first_name
+                    }, введите, пожалуйста, число`
+                  );
                   fixTwice();
                 } else {
                   bot.sendMessage(
@@ -205,11 +228,17 @@ bot.on("text", function(msg) {
             request(url, function(error, response, body) {
               if (!error && response.statusCode == 200) {
                 const data = JSON.parse(body);
-                const num = parseInt(msg.text);
+                const newMsg = msg.text.replace(/\s+/g, "").replace(/\D+/g, "");
+                const num = parseInt(newMsg);
                 const summ = num / data[2].sale;
 
                 if (isNaN(num)) {
-                  bot.sendMessage(messageChatId, `Неверный формат. ${msg.from.first_name}, введите, пожалуйста, число`);
+                  bot.sendMessage(
+                    messageChatId,
+                    `Неверный формат. ${
+                      msg.from.first_name
+                    }, введите, пожалуйста, число`
+                  );
                   fixTwice();
                 } else {
                   bot.sendMessage(
@@ -238,11 +267,17 @@ bot.on("text", function(msg) {
             request(url, function(error, response, body) {
               if (!error && response.statusCode == 200) {
                 const data = JSON.parse(body);
-                const num = parseInt(msg.text);
+                const newMsg = msg.text.replace(/\s+/g, "").replace(/\D+/g, "");
+                const num = parseInt(newMsg);
                 const summ = num * data[2].buy;
 
                 if (isNaN(num)) {
-                  bot.sendMessage(messageChatId, `Неверный формат. ${msg.from.first_name}, введите, пожалуйста, число`);
+                  bot.sendMessage(
+                    messageChatId,
+                    `Неверный формат. ${
+                      msg.from.first_name
+                    }, введите, пожалуйста, число`
+                  );
                   fixTwice();
                 } else {
                   bot.sendMessage(
