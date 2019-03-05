@@ -65,27 +65,31 @@ bot.on("text", function(msg) {
   const BUSD = () => {
     if (messageText === "Купить $") {
       bot.sendMessage(messageChatId, enterCurr[0]).then(payload => {
-        bot.once("message", msg => {
-          request(url, function(error, response, body) {
-            if (!error && response.statusCode == 200) {
-              const data = JSON.parse(body);
-              const num = parseInt(msg.text);
-              const summ = num / data[0].sale;
+        const fixTwice = () => {
+          bot.once("message", msg => {
+            request(url, function(error, response, body) {
+              if (!error && response.statusCode == 200) {
+                const data = JSON.parse(body);
+                const newMsg = msg.text.replace(/\s+/g, '').replace(/\D+/g,"");
+                const num = parseInt(newMsg);
+                const summ = num / data[0].sale;
 
-              if (isNaN(num)) {
-                bot.sendMessage(messageChatId, "Неверный формат");
-                BUSD();
-              } else {
-                bot.sendMessage(
-                  messageChatId,
-                  `${msg.from.first_name}, Вы можете купить ${summ.toFixed(
-                    2
-                  )} USD`
-                );
+                if (isNaN(num)) {
+                  bot.sendMessage(messageChatId, `Неверный формат. ${msg.from.first_name}, введите, пожалуйста, число`);
+                  fixTwice();
+                } else {
+                  bot.sendMessage(
+                    messageChatId,
+                    `${msg.from.first_name}, Вы можете купить ${summ.toFixed(
+                      2
+                    )} USD`
+                  );
+                }
               }
-            }
+            });
           });
-        });
+        };
+        fixTwice();
       });
     }
   };
@@ -95,27 +99,30 @@ bot.on("text", function(msg) {
   const SUSD = () => {
     if (messageText === "Продать $") {
       bot.sendMessage(messageChatId, enterCurr[1]).then(payload => {
-        bot.once("message", msg => {
-          request(url, function(error, response, body) {
-            if (!error && response.statusCode == 200) {
-              const data = JSON.parse(body);
-              const num = parseInt(msg.text);
-              const summ = num * data[0].buy;
+        const fixTwice = () => {
+          bot.once("message", msg => {
+            request(url, function(error, response, body) {
+              if (!error && response.statusCode == 200) {
+                const data = JSON.parse(body);
+                const num = parseInt(msg.text);
+                const summ = num * data[0].buy;
 
-              if (isNaN(num)) {
-                bot.sendMessage(messageChatId, "Неверный формат");
-                SUSD();
-              } else {
-                bot.sendMessage(
-                  messageChatId,
-                  `${msg.from.first_name}, Вы можете купить ${summ.toFixed(
-                    2
-                  )} UAH`
-                );
+                if (isNaN(num)) {
+                  bot.sendMessage(messageChatId, `Неверный формат. ${msg.from.first_name}, введите, пожалуйста, число`);
+                  fixTwice();
+                } else {
+                  bot.sendMessage(
+                    messageChatId,
+                    `${msg.from.first_name}, Вы можете купить ${summ.toFixed(
+                      2
+                    )} UAH`
+                  );
+                }
               }
-            }
+            });
           });
-        });
+        };
+        fixTwice();
       });
     }
   };
@@ -126,27 +133,30 @@ bot.on("text", function(msg) {
   const BEUR = () => {
     if (messageText === "Купить €") {
       bot.sendMessage(messageChatId, enterCurr[0]).then(payload => {
-        bot.once("message", msg => {
-          request(url, function(error, response, body) {
-            if (!error && response.statusCode == 200) {
-              const data = JSON.parse(body);
-              const num = parseInt(msg.text);
-              const summ = num / data[1].sale;
+        const fixTwice = () => {
+          bot.once("message", msg => {
+            request(url, function(error, response, body) {
+              if (!error && response.statusCode == 200) {
+                const data = JSON.parse(body);
+                const num = parseInt(msg.text);
+                const summ = num / data[1].sale;
 
-              if (isNaN(num)) {
-                bot.sendMessage(messageChatId, "Неверный формат");
-                BEUR();
-              } else {
-                bot.sendMessage(
-                  messageChatId,
-                  `${msg.from.first_name}, Вы можете купить ${summ.toFixed(
-                    2
-                  )} EUR`
-                );
+                if (isNaN(num)) {
+                  bot.sendMessage(messageChatId, `Неверный формат. ${msg.from.first_name}, введите, пожалуйста, число`);
+                  fixTwice();
+                } else {
+                  bot.sendMessage(
+                    messageChatId,
+                    `${msg.from.first_name}, Вы можете купить ${summ.toFixed(
+                      2
+                    )} EUR`
+                  );
+                }
               }
-            }
+            });
           });
-        });
+        };
+        fixTwice();
       });
     }
   };
@@ -156,27 +166,30 @@ bot.on("text", function(msg) {
   const SEUR = () => {
     if (messageText === "Продать €") {
       bot.sendMessage(messageChatId, enterCurr[2]).then(payload => {
-        bot.once("message", msg => {
-          request(url, function(error, response, body) {
-            if (!error && response.statusCode == 200) {
-              const data = JSON.parse(body);
-              const num = parseInt(msg.text);
-              const summ = num * data[1].buy;
+        const fixTwice = () => {
+          bot.once("message", msg => {
+            request(url, function(error, response, body) {
+              if (!error && response.statusCode == 200) {
+                const data = JSON.parse(body);
+                const num = parseInt(msg.text);
+                const summ = num * data[1].buy;
 
-              if (isNaN(num)) {
-                bot.sendMessage(messageChatId, "Неверный формат");
-                SEUR();
-              } else {
-                bot.sendMessage(
-                  messageChatId,
-                  `${msg.from.first_name}, Вы можете купить ${summ.toFixed(
-                    2
-                  )} UAH`
-                );
+                if (isNaN(num)) {
+                  bot.sendMessage(messageChatId, `Неверный формат. ${msg.from.first_name}, введите, пожалуйста, число`);
+                  fixTwice();
+                } else {
+                  bot.sendMessage(
+                    messageChatId,
+                    `${msg.from.first_name}, Вы можете купить ${summ.toFixed(
+                      2
+                    )} UAH`
+                  );
+                }
               }
-            }
+            });
           });
-        });
+        };
+        fixTwice();
       });
     }
   };
@@ -187,27 +200,30 @@ bot.on("text", function(msg) {
   const BRUB = () => {
     if (messageText === "Купить ₽") {
       bot.sendMessage(messageChatId, enterCurr[0]).then(payload => {
-        bot.once("message", msg => {
-          request(url, function(error, response, body) {
-            if (!error && response.statusCode == 200) {
-              const data = JSON.parse(body);
-              const num = parseInt(msg.text);
-              const summ = num / data[2].sale;
+        const fixTwice = () => {
+          bot.once("message", msg => {
+            request(url, function(error, response, body) {
+              if (!error && response.statusCode == 200) {
+                const data = JSON.parse(body);
+                const num = parseInt(msg.text);
+                const summ = num / data[2].sale;
 
-              if (isNaN(num)) {
-                bot.sendMessage(messageChatId, "Неверный формат");
-                BRUB();
-              } else {
-                bot.sendMessage(
-                  messageChatId,
-                  `${msg.from.first_name}, Вы можете купить ${summ.toFixed(
-                    2
-                  )} RUB`
-                );
+                if (isNaN(num)) {
+                  bot.sendMessage(messageChatId, `Неверный формат. ${msg.from.first_name}, введите, пожалуйста, число`);
+                  fixTwice();
+                } else {
+                  bot.sendMessage(
+                    messageChatId,
+                    `${msg.from.first_name}, Вы можете купить ${summ.toFixed(
+                      2
+                    )} RUB`
+                  );
+                }
               }
-            }
+            });
           });
-        });
+        };
+        fixTwice();
       });
     }
   };
@@ -217,27 +233,30 @@ bot.on("text", function(msg) {
   const SRUB = () => {
     if (messageText === "Продать ₽") {
       bot.sendMessage(messageChatId, enterCurr[3]).then(payload => {
-        bot.once("message", msg => {
-          request(url, function(error, response, body) {
-            if (!error && response.statusCode == 200) {
-              const data = JSON.parse(body);
-              const num = parseInt(msg.text);
-              const summ = num * data[2].buy;
+        const fixTwice = () => {
+          bot.once("message", msg => {
+            request(url, function(error, response, body) {
+              if (!error && response.statusCode == 200) {
+                const data = JSON.parse(body);
+                const num = parseInt(msg.text);
+                const summ = num * data[2].buy;
 
-              if (isNaN(num)) {
-                bot.sendMessage(messageChatId, "Неверный формат");
-                SRUB();
-              } else {
-                bot.sendMessage(
-                  messageChatId,
-                  `${msg.from.first_name}, Вы можете купить ${summ.toFixed(
-                    2
-                  )} UAH`
-                );
+                if (isNaN(num)) {
+                  bot.sendMessage(messageChatId, `Неверный формат. ${msg.from.first_name}, введите, пожалуйста, число`);
+                  fixTwice();
+                } else {
+                  bot.sendMessage(
+                    messageChatId,
+                    `${msg.from.first_name}, Вы можете купить ${summ.toFixed(
+                      2
+                    )} UAH`
+                  );
+                }
               }
-            }
+            });
           });
-        });
+        };
+        fixTwice();
       });
     }
   };
