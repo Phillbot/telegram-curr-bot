@@ -1,7 +1,7 @@
 const request = require("request");
 const TelegramBot = require("node-telegram-bot-api");
 const TOKEN = "783353878:AAFvV6RnJV7QMK-vsLZyFWsEYXDaFh-Jj7M";
-const botOptions = { 
+const botOptions = {
   polling: true,
   webHook: {
     port: process.env.PORT
@@ -17,15 +17,13 @@ const opts = {
     ],
     one_time_keyboard: true,
     resize_keyboard: true
-  }),
-
+  })
 };
 
-const url = process.env.APP_URL || 'https://varus-test-app.herokuapp.com:443';
+const url = process.env.APP_URL || "https://varus-test-app.herokuapp.com:443";
 
 const bot = new TelegramBot(TOKEN, botOptions);
 bot.setWebHook(`${url}/bot${TOKEN}`);
-
 
 bot.on("text", function(msg) {
   const messageChatId = msg.chat.id;
